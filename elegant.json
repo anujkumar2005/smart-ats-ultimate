@@ -1,0 +1,37 @@
+{
+    "id": "elegant",
+    "name": "Elegant Classic",
+    "description": "Sophisticated serif-based design for law, healthcare, and traditional fields",
+    "ats_score": 96,
+    "badge": null,
+    "icon": "✒️",
+    "style": {
+        "font_family": "Times-Roman",
+        "title_size": 22,
+        "heading_size": 12,
+        "title_color": "#1a1a1a",
+        "heading_color": "#2d3748",
+        "border_style": "classic",
+        "border_width": 2
+    },
+    "sections": [
+        "summary",
+        "experience",
+        "education",
+        "professional_affiliations",
+        "certifications"
+    ],
+    "best_for": [
+        "Law",
+        "Healthcare",
+        "Academia",
+        "Non-Profit",
+        "Publishing"
+    ],
+    "features": [
+        "Elegant serif typography",
+        "Traditional and refined",
+        "Professional credibility",
+        "Classic design principles"
+    ]
+}

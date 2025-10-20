@@ -1,0 +1,38 @@
+{
+    "id": "technical",
+    "name": "Technical Engineer",
+    "description": "Skills-focused layout optimized for engineering and IT professionals",
+    "ats_score": 97,
+    "badge": "Recommended",
+    "icon": "⚙️",
+    "style": {
+        "font_family": "Courier",
+        "title_size": 20,
+        "heading_size": 11,
+        "title_color": "#000000",
+        "heading_color": "#2d3748",
+        "border_style": "technical",
+        "border_width": 1
+    },
+    "sections": [
+        "technical_summary",
+        "technical_skills",
+        "experience",
+        "projects",
+        "certifications",
+        "education"
+    ],
+    "best_for": [
+        "Software Engineering",
+        "IT",
+        "DevOps",
+        "System Admin",
+        "Technical Roles"
+    ],
+    "features": [
+        "Technical skills emphasis",
+        "Project showcase",
+        "Code-friendly font",
+        "Engineering-focused"
+    ]
+}

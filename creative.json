@@ -1,0 +1,37 @@
+{
+    "id": "creative",
+    "name": "Creative Professional",
+    "description": "Subtle design elements for marketing, design, and creative industries",
+    "ats_score": 92,
+    "badge": null,
+    "icon": "🎨",
+    "style": {
+        "font_family": "Helvetica",
+        "title_size": 22,
+        "heading_size": 12,
+        "title_color": "#4a5568",
+        "heading_color": "#667eea",
+        "border_style": "decorative",
+        "border_width": 2
+    },
+    "sections": [
+        "summary",
+        "experience",
+        "projects",
+        "skills",
+        "education"
+    ],
+    "best_for": [
+        "Marketing",
+        "Design",
+        "Creative",
+        "Media",
+        "Advertising"
+    ],
+    "features": [
+        "Subtle color accents",
+        "Project showcase section",
+        "Creative yet professional",
+        "ATS-friendly design elements"
+    ]
+}

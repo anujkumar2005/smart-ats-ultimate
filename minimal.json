@@ -1,0 +1,35 @@
+{
+    "id": "minimal",
+    "name": "Minimal Clean",
+    "description": "Ultra-simple design with maximum ATS readability for any industry",
+    "ats_score": 99,
+    "badge": "Best ATS",
+    "icon": "✨",
+    "style": {
+        "font_family": "Helvetica",
+        "title_size": 18,
+        "heading_size": 10,
+        "title_color": "#000000",
+        "heading_color": "#000000",
+        "border_style": "none",
+        "border_width": 0
+    },
+    "sections": [
+        "summary",
+        "experience",
+        "education",
+        "skills"
+    ],
+    "best_for": [
+        "Any Industry",
+        "ATS Optimization",
+        "Universal",
+        "Career Change"
+    ],
+    "features": [
+        "Maximum ATS compatibility",
+        "Clean and simple",
+        "No distractions",
+        "Universal appeal"
+    ]
+}

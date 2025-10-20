@@ -1,0 +1,37 @@
+{
+    "id": "executive",
+    "name": "Executive Leader",
+    "description": "Bold, authoritative format for senior management and leadership positions",
+    "ats_score": 96,
+    "badge": null,
+    "icon": "👔",
+    "style": {
+        "font_family": "Helvetica-Bold",
+        "title_size": 26,
+        "heading_size": 14,
+        "title_color": "#000000",
+        "heading_color": "#1a202c",
+        "border_style": "executive",
+        "border_width": 3
+    },
+    "sections": [
+        "executive_summary",
+        "leadership_experience",
+        "achievements",
+        "education",
+        "board_positions"
+    ],
+    "best_for": [
+        "C-Level",
+        "Senior Management",
+        "Directors",
+        "VP Roles",
+        "Leadership"
+    ],
+    "features": [
+        "Bold executive presence",
+        "Leadership-focused sections",
+        "Strategic achievements",
+        "Authority and credibility"
+    ]
+}

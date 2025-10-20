@@ -1,0 +1,37 @@
+{
+    "id": "harvard",
+    "name": "Harvard Business",
+    "description": "Academic-inspired design ideal for consulting, finance, and executive roles",
+    "ats_score": 98,
+    "badge": "Premium",
+    "icon": "🎓",
+    "style": {
+        "font_family": "Helvetica",
+        "title_size": 24,
+        "heading_size": 12,
+        "title_color": "#000080",
+        "heading_color": "#000080",
+        "border_style": "academic",
+        "border_width": 2
+    },
+    "sections": [
+        "summary",
+        "experience",
+        "education",
+        "skills",
+        "publications"
+    ],
+    "best_for": [
+        "Consulting",
+        "Finance",
+        "MBA Roles",
+        "Executive",
+        "Strategy"
+    ],
+    "features": [
+        "Academic credibility",
+        "Professional blue accent",
+        "Structured layout",
+        "Business school inspired"
+    ]
+}

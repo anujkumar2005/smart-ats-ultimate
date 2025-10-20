@@ -1,0 +1,37 @@
+{
+    "id": "corporate",
+    "name": "Corporate Standard",
+    "description": "Industry-standard format for banking, insurance, and corporate sectors",
+    "ats_score": 98,
+    "badge": null,
+    "icon": "🏢",
+    "style": {
+        "font_family": "Helvetica",
+        "title_size": 20,
+        "heading_size": 12,
+        "title_color": "#000000",
+        "heading_color": "#333333",
+        "border_style": "simple",
+        "border_width": 1
+    },
+    "sections": [
+        "summary",
+        "experience",
+        "education",
+        "skills",
+        "certifications"
+    ],
+    "best_for": [
+        "Banking",
+        "Insurance",
+        "Corporate",
+        "Finance",
+        "Government"
+    ],
+    "features": [
+        "Traditional corporate format",
+        "Maximum ATS compatibility",
+        "Conservative and professional",
+        "Industry standard layout"
+    ]
+}

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Resume - Smart ATS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0e27;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 60px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 60px auto 120px;
+            padding: 0 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-title {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff, #a78bfa, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .success-banner {
+            background: rgba(16, 185, 129, 0.15);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(16, 185, 129, 0.4);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 50px;
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        .success-icon {
+            font-size: 72px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .score-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .score-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .score-label {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .score-value {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .score-improvement {
+            font-size: 24px;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .preview-container {
+            background: white;
+            color: #000;
+            border-radius: 25px;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            margin-bottom: 50px;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .resume-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .resume-name {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .resume-contact {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .resume-section {
+            margin-bottom: 25px;
+        }
+
+        .resume-section h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #2d55ff;
+            text-transform: uppercase;
+            border-bottom: 2px solid #2d55ff;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .download-section {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(30px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            padding: 20px 40px;
+            border: none;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .download-btn-primary {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+        }
+
+        .download-btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(16, 185, 129, 0.6);
+        }
+
+        .download-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .download-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .experience-item {
+            margin-bottom: 20px;
+        }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .company-duration {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .achievement-list {
+            margin-left: 20px;
+            color: #333;
+        }
+
+        .achievement-list li {
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 38px;
+            }
+
+            .preview-container {
+                padding: 30px 20px;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .gradient-bg,
+            #particles-canvas,
+            header,
+            .download-section,
+            .success-banner,
+            .score-comparison {
+                display: none !important;
+            }
+
+            .preview-container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gradient-bg"></div>
+    <canvas id="particles-canvas"></canvas>
+
+    <header>
+        <div class="logo">⚡ SmartATS</div>
+        <div class="header-actions">
+            <button class="btn btn-secondary" onclick="window.location.href='/2-upload.html'">New Analysis</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">Resume Ready!</h1>
+            <p style="font-size: 20px; color: rgba(255,255,255,0.7);">Your ATS-optimized resume is ready to download</p>
+        </div>
+
+        <div class="success-banner">
+            <div class="success-icon">🎉</div>
+            <h2 style="font-size: 28px; margin-bottom: 15px;">Congratulations!</h2>
+            <p style="font-size: 18px; color: rgba(255,255,255,0.8);">Your resume has been successfully optimized for
+                ATS systems</p>
+        </div>
+
+        <div class="score-comparison">
+            <div class="score-box">
+                <div class="score-label">Original Score</div>
+                <div class="score-value" id="original-score">0</div>
+                <div style="color: rgba(255,255,255,0.6);">Before Optimization</div>
+            </div>
+
+            <div class="score-box">
+                <div class="score-label">New Score</div>
+                <div class="score-value" id="new-score">0</div>
+                <div class="score-improvement" id="improvement">+0 Points</div>
+            </div>
+        </div>
+
+        <div class="preview-container" id="preview-container">
+            <div style="text-align: center; padding: 100px 20px; color: #999;">
+                <div style="font-size: 64px; margin-bottom: 20px;">📝</div>
+                <p>Loading resume preview...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="download-section">
+        <div class="download-buttons">
+            <button class="download-btn download-btn-primary" onclick="downloadResume()">
+                <span style="font-size: 24px;">📥</span>
+                <span>Download PDF Resume</span>
+            </button>
+            <button class="download-btn download-btn-secondary" onclick="window.print()">
+                <span style="font-size: 24px;">🖨️</span>
+                <span>Print Resume</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = window.location.origin;
+
+        // Particle animation
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let particles = [];
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            const generatedResume = sessionStorage.getItem('generatedResume');
+            const atsResults = sessionStorage.getItem('atsResults');
+
+            if (!generatedResume) {
+                alert('No resume found. Please generate first.');
+                window.location.href = '/5-builder.html';
+                return;
+            }
+
+            const resume = JSON.parse(generatedResume);
+            const results = JSON.parse(atsResults);
+
+            displayResume(resume);
+            await calculateNewScore();
+            displayScores(results.score);
+        });
+
+        function displayResume(resume) {
+            const container = document.getElementById('preview-container');
+
+            let html = `
+                <div class="resume-header">
+                    <div class="resume-name">${resume.name}</div>
+                    <div class="resume-contact">
+                        ${resume.contact.email} | ${resume.contact.phone} | ${resume.contact.location}
+                    </div>
+                </div>
+
+                <div class="resume-section">
+                    <h3>Professional Summary</h3>
+                    <p style="line-height: 1.8; color: #333;">${resume.summary}</p>
+                </div>
+
+                <div class="resume-section">
+                    <h3>Professional Experience</h3>
+                    ${resume.experience.map(exp => `
+                        <div class="experience-item">
+                            <div class="job-title">${exp.title} - ${exp.company}</div>
+                            <div class="company-duration">${exp.duration}</div>
+                            <ul class="achievement-list">
+                                ${exp.achievements.map(ach => `<li>${ach}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="resume-section">
+                    <h3>Education</h3>
+                    ${resume.education.map(edu => `
+                        <p style="margin-bottom: 12px; color: #333;">
+                            <strong>${edu.degree}</strong> - ${edu.institution} (${edu.year})
+                            ${edu.gpa ? ` | GPA: ${edu.gpa}` : ''}
+                        </p>
+                    `).join('')}
+                </div>
+
+                <div class="resume-section">
+                    <h3>Technical Skills</h3>
+                    <p style="color: #333; line-height: 1.8;">${resume.skills.join(' • ')}</p>
+                </div>
+
+                ${resume.certifications && resume.certifications.length > 0 ? `
+                <div class="resume-section">
+                    <h3>Certifications</h3>
+                    <ul style="margin-left: 20px; color: #333;">
+                        ${resume.certifications.map(cert => `<li style="margin-bottom: 6px;">${cert}</li>`).join('')}
+                    </ul>
+                </div>
+                ` : ''}
+            `;
+
+            container.innerHTML = html;
+        }
+
+        async function calculateNewScore() {
+            try {
+                const response = await fetch(`${API_BASE}/api/recalculate-score`, {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    sessionStorage.setItem('newScore', data.new_score);
+                    sessionStorage.setItem('improvement', data.improvement);
+                }
+            } catch (error) {
+                console.error('Score calculation error:', error);
+            }
+        }
+
+        function displayScores(originalScore) {
+            const newScore = parseInt(sessionStorage.getItem('newScore') || '85');
+            const improvement = parseInt(sessionStorage.getItem('improvement') || '0');
+
+            animateScore('original-score', originalScore);
+            setTimeout(() => animateScore('new-score', newScore), 500);
+
+            const improvementEl = document.getElementById('improvement');
+            if (improvement > 0) {
+                improvementEl.textContent = `+${improvement} Points 🚀`;
+                improvementEl.style.color = '#10b981';
+            } else {
+                improvementEl.textContent = `${improvement} Points`;
+            }
+        }
+
+        function animateScore(elementId, target) {
+            const element = document.getElementById(elementId);
+            let current = 0;
+            const duration = 2000;
+            const increment = target / (duration / 16);
+
+            const counter = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(counter);
+                }
+                element.textContent = Math.round(current);
+            }, 16);
+        }
+
+        async function downloadResume() {
+            try {
+                const response = await fetch(`${API_BASE}/api/download-resume`, {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'ATS_Optimized_Resume.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                } else {
+                    alert('Download failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Download error:', error);
+                alert('Download failed. Please check connection.');
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+{
+    "id": "bold",
+    "name": "Bold Impact",
+    "description": "Strong typography and clear sections for sales and business development roles",
+    "ats_score": 94,
+    "badge": null,
+    "icon": "💪",
+    "style": {
+        "font_family": "Helvetica-Bold",
+        "title_size": 24,
+        "heading_size": 13,
+        "title_color": "#000000",
+        "heading_color": "#1a1a1a",
+        "border_style": "bold",
+        "border_width": 3
+    },
+    "sections": [
+        "summary",
+        "experience",
+        "education",
+        "skills",
+        "achievements"
+    ],
+    "best_for": [
+        "Sales",
+        "Business Development",
+        "Leadership",
+        "Marketing"
+    ],
+    "features": [
+        "Bold typography for impact",
+        "Strong section headers",
+        "Achievement-focused layout",
+        "Professional and assertive"
+    ]
+}

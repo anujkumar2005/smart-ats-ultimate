@@ -1,0 +1,37 @@
+{
+    "id": "professional",
+    "name": "Professional Classic",
+    "description": "Clean, traditional format perfect for corporate environments with maximum ATS compatibility",
+    "ats_score": 100,
+    "badge": "Most Popular",
+    "icon": "📄",
+    "style": {
+        "font_family": "Helvetica",
+        "title_size": 20,
+        "heading_size": 11,
+        "title_color": "#000000",
+        "heading_color": "#000000",
+        "border_style": "simple",
+        "border_width": 1
+    },
+    "sections": [
+        "summary",
+        "experience",
+        "education",
+        "skills",
+        "certifications"
+    ],
+    "best_for": [
+        "Corporate",
+        "General Business",
+        "Finance",
+        "Operations",
+        "Administration"
+    ],
+    "features": [
+        "Perfect ATS score",
+        "Traditional and trusted",
+        "Universal format",
+        "Most widely accepted"
+    ]
+}

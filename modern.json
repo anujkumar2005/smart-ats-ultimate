@@ -1,0 +1,37 @@
+{
+    "id": "modern",
+    "name": "Modern Tech",
+    "description": "Contemporary design for tech professionals, startups, and innovation roles",
+    "ats_score": 95,
+    "badge": "Trending",
+    "icon": "💻",
+    "style": {
+        "font_family": "Helvetica",
+        "title_size": 22,
+        "heading_size": 11,
+        "title_color": "#2d55ff",
+        "heading_color": "#2d55ff",
+        "border_style": "modern",
+        "border_width": 1
+    },
+    "sections": [
+        "summary",
+        "technical_skills",
+        "experience",
+        "projects",
+        "education"
+    ],
+    "best_for": [
+        "Technology",
+        "Startups",
+        "Software Engineering",
+        "Product",
+        "Innovation"
+    ],
+    "features": [
+        "Contemporary design",
+        "Tech-forward layout",
+        "Skills-first approach",
+        "Modern color accents"
+    ]
+}
